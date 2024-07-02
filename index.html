@@ -9,16 +9,28 @@
 <body>
     <div class="container">
         <h1>Jeux de Réaction</h1>
-        <div class="game" id="reactionTimeGame">
+        <div id="userForm">
+            <label for="username">Entrez votre nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+            <button id="startButton">Commencer</button>
+        </div>
+        <div class="game" id="reactionTimeGame" style="display: none;">
             <h2>Jeu de Temps de Réaction</h2>
             <div id="reactionBox" class="reaction-box"></div>
             <p id="reactionMessage"></p>
         </div>
-        <div class="game" id="targetClickGame">
+        <div class="game" id="targetClickGame" style="display: none;">
             <h2>Jeu de Clic sur Cible</h2>
             <button id="startTargetGame">Démarrer le Jeu</button>
             <div id="targetGameArea" class="target-game-area"></div>
             <p id="targetGameMessage"></p>
+        </div>
+        <div id="results" style="display: none;">
+            <h2>Résultats</h2>
+            <h3>Jeu de Temps de Réaction</h3>
+            <ul id="reactionResults"></ul>
+            <h3>Jeu de Clic sur Cible</h3>
+            <ul id="targetResults"></ul>
         </div>
     </div>
     <script src="scripts.js"></script>

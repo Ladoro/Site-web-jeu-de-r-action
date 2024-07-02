@@ -10,13 +10,16 @@ const reactionTimeGame = document.getElementById('reactionTimeGame');
 const targetClickGame = document.getElementById('targetClickGame');
 const reactionBox = document.getElementById('reactionBox');
 const reactionMessage = document.getElementById('reactionMessage');
-const startReactionGameButton = document.getElementById('startReactionGame');
+const startReactionGameButton = document.getElementById('startReactionGameButton');
 const restartReactionGameButton = document.getElementById('restartReactionGame');
-const reactionResults = document.getElementById('reactionTimes'); // élément ul pour les temps de réaction
-const targetResults = document.getElementById('targetTimes'); // élément ul pour les temps de clic sur cible
+const startTargetGameButton = document.getElementById('startTargetGame');
 const targetGameArea = document.getElementById('targetGameArea');
 const targetGameMessage = document.getElementById('targetGameMessage');
-const startTargetGameButton = document.getElementById('startTargetGame');
+const reactionResults = document.getElementById('reactionResults');
+const targetResults = document.getElementById('targetResults');
+const resultsSection = document.getElementById('results');
+const leaderboardList = document.getElementById('leaderboardList');
+const leaderboardSection = document.getElementById('leaderboard');
 
 // Écouter le clic sur le bouton "Commencer"
 startButton.addEventListener('click', function() {
@@ -25,8 +28,8 @@ startButton.addEventListener('click', function() {
         userForm.style.display = 'none';
         reactionTimeGame.style.display = 'block';
         targetClickGame.style.display = 'block';
+        resultsSection.style.display = 'block';
         loadUserData();
-        startReactionGame();
     } else {
         alert('Veuillez entrer un nom d\'utilisateur.');
     }
@@ -62,16 +65,6 @@ let startTime;
 
 startReactionGameButton.addEventListener('click', startReactionGame);
 
-function startReactionGame() {
-    reactionMessage.textContent = 'Préparez-vous...';
-    reactionBox.style.backgroundColor = 'red';
-    setTimeout(() => {
-        reactionBox.style.backgroundColor = 'green';
-        reactionMessage.textContent = 'Cliquez maintenant!';
-        startTime = new Date().getTime();
-    }, Math.random() * 2000 + 1000);
-}
-
 reactionBox.addEventListener('click', function() {
     if (reactionBox.style.backgroundColor === 'green') {
         let endTime = new Date().getTime();
@@ -83,14 +76,25 @@ reactionBox.addEventListener('click', function() {
         reactionBox.style.backgroundColor = 'red';
         restartReactionGameButton.style.display = 'block';
         
-        // Réinitialiser le jeu après un court délai
+        // Réinitialiser la boîte de jeu après un court délai pour éviter un changement brusque
         setTimeout(() => {
+            reactionBox.style.backgroundColor = 'red';
             reactionMessage.textContent = '';
             startReactionGame();
-            restartReactionGameButton.style.display = 'none';
         }, 1000);
     }
 });
+
+// Réinitialisation du jeu de réaction
+function startReactionGame() {
+    reactionMessage.textContent = 'Préparez-vous...';
+    restartReactionGameButton.style.display = 'none';
+    setTimeout(() => {
+        reactionBox.style.backgroundColor = 'green';
+        reactionMessage.textContent = 'Cliquez maintenant!';
+        startTime = new Date().getTime();
+    }, Math.random() * 2000 + 1000);
+}
 
 // Jeu de Clic sur Cible
 let targetCount = 0;

@@ -3,22 +3,22 @@ let username;
 let userData = {};
 
 // Sélectionner les éléments HTML
-let userForm = document.getElementById('userForm');
-let usernameInput = document.getElementById('username');
-let startButton = document.getElementById('startButton');
-let reactionTimeGame = document.getElementById('reactionTimeGame');
-let targetClickGame = document.getElementById('targetClickGame');
-let reactionBox = document.getElementById('reactionBox');
-let reactionMessage = document.getElementById('reactionMessage');
-let startTargetGameButton = document.getElementById('startTargetGame');
-let targetGameArea = document.getElementById('targetGameArea');
-let targetGameMessage = document.getElementById('targetGameMessage');
-let reactionResults = document.getElementById('reactionResults');
-let targetResults = document.getElementById('targetResults');
-let resultsSection = document.getElementById('results');
+const userForm = document.getElementById('userForm');
+const usernameInput = document.getElementById('username');
+const startButton = document.getElementById('startButton');
+const reactionTimeGame = document.getElementById('reactionTimeGame');
+const targetClickGame = document.getElementById('targetClickGame');
+const reactionBox = document.getElementById('reactionBox');
+const reactionMessage = document.getElementById('reactionMessage');
+const startTargetGameButton = document.getElementById('startTargetGame');
+const targetGameArea = document.getElementById('targetGameArea');
+const targetGameMessage = document.getElementById('targetGameMessage');
+const reactionResults = document.getElementById('reactionResults');
+const targetResults = document.getElementById('targetResults');
+const resultsSection = document.getElementById('results');
 
 startButton.addEventListener('click', function() {
-    username = usernameInput.value;
+    username = usernameInput.value.trim();
     if (username) {
         userForm.style.display = 'none';
         reactionTimeGame.style.display = 'block';
@@ -26,6 +26,8 @@ startButton.addEventListener('click', function() {
         resultsSection.style.display = 'block';
         loadUserData();
         startReactionGame();
+    } else {
+        alert('Veuillez entrer un nom d\'utilisateur.');
     }
 });
 

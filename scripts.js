@@ -10,13 +10,14 @@ const reactionTimeGame = document.getElementById('reactionTimeGame');
 const targetClickGame = document.getElementById('targetClickGame');
 const reactionBox = document.getElementById('reactionBox');
 const reactionMessage = document.getElementById('reactionMessage');
-const startTargetGameButton = document.getElementById('startTargetGame');
-const targetGameArea = document.getElementById('targetGameArea');
-const targetGameMessage = document.getElementById('targetGameMessage');
+const startReactionGameButton = document.getElementById('startReactionGame');
+const restartReactionGameButton = document.getElementById('restartReactionGame');
 const reactionResults = document.getElementById('reactionResults');
 const targetResults = document.getElementById('targetResults');
 const resultsSection = document.getElementById('results');
-const restartReactionGameButton = document.getElementById('restartReactionGame');
+const targetGameArea = document.getElementById('targetGameArea');
+const targetGameMessage = document.getElementById('targetGameMessage');
+const startTargetGameButton = document.getElementById('startTargetGame');
 
 // Écouter le clic sur le bouton "Commencer"
 startButton.addEventListener('click', function() {
@@ -61,6 +62,18 @@ function displayResults() {
 // Jeu de Temps de Réaction
 let startTime;
 
+startReactionGameButton.addEventListener('click', startReactionGame);
+
+function startReactionGame() {
+    reactionMessage.textContent = 'Préparez-vous...';
+    reactionBox.style.backgroundColor = 'red';
+    setTimeout(() => {
+        reactionBox.style.backgroundColor = 'green';
+        reactionMessage.textContent = 'Cliquez maintenant!';
+        startTime = new Date().getTime();
+    }, Math.random() * 2000 + 1000);
+}
+
 reactionBox.addEventListener('click', function() {
     if (reactionBox.style.backgroundColor === 'green') {
         let endTime = new Date().getTime();
@@ -72,24 +85,14 @@ reactionBox.addEventListener('click', function() {
         reactionBox.style.backgroundColor = 'red';
         restartReactionGameButton.style.display = 'block';
         
-        // Réinitialiser la boîte de jeu après un court délai pour éviter un changement brusque
+        // Réinitialiser le jeu après un court délai
         setTimeout(() => {
-            reactionBox.style.backgroundColor = 'red';
             reactionMessage.textContent = '';
             startReactionGame();
+            restartReactionGameButton.style.display = 'none';
         }, 1000);
     }
 });
-
-// Réinitialisation du jeu de réaction
-function restartReactionGame() {
-    reactionMessage.textContent = 'Préparez-vous...';
-    setTimeout(() => {
-        reactionBox.style.backgroundColor = 'green';
-        reactionMessage.textContent = 'Cliquez maintenant!';
-        startTime = new Date().getTime();
-    }, Math.random() * 2000 + 1000);
-}
 
 // Jeu de Clic sur Cible
 let targetCount = 0;

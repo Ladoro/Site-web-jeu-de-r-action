@@ -17,7 +17,9 @@
         <div class="game" id="reactionTimeGame" style="display: none;">
             <h2>Jeu de Temps de Réaction</h2>
             <p>Attendez que la couleur devienne verte, puis cliquez le plus rapidement possible.</p>
-            <div id="reactionBox" class="reaction-box"></div>
+            <div id="reactionBox" class="reaction-box">
+                <button id="startReactionGameButton">Démarrer le Jeu</button>
+            </div>
             <p id="reactionMessage"></p>
             <button id="restartReactionGame" style="display: none;">Recommencer</button>
         </div>
@@ -34,6 +36,10 @@
             <ul id="reactionResults"></ul>
             <h3>Jeu de Clic sur Cible</h3>
             <ul id="targetResults"></ul>
+        </div>
+        <div id="leaderboard" style="display: none;">
+            <h2>Classement</h2>
+            <ul id="leaderboardList"></ul>
         </div>
     </div>
     <script src="scripts.js"></script>

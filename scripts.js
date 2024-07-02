@@ -12,9 +12,8 @@ const reactionBox = document.getElementById('reactionBox');
 const reactionMessage = document.getElementById('reactionMessage');
 const startReactionGameButton = document.getElementById('startReactionGame');
 const restartReactionGameButton = document.getElementById('restartReactionGame');
-const reactionResults = document.getElementById('reactionResults');
-const targetResults = document.getElementById('targetResults');
-const resultsSection = document.getElementById('results');
+const reactionResults = document.getElementById('reactionTimes'); // élément ul pour les temps de réaction
+const targetResults = document.getElementById('targetTimes'); // élément ul pour les temps de clic sur cible
 const targetGameArea = document.getElementById('targetGameArea');
 const targetGameMessage = document.getElementById('targetGameMessage');
 const startTargetGameButton = document.getElementById('startTargetGame');
@@ -26,7 +25,6 @@ startButton.addEventListener('click', function() {
         userForm.style.display = 'none';
         reactionTimeGame.style.display = 'block';
         targetClickGame.style.display = 'block';
-        resultsSection.style.display = 'block';
         loadUserData();
         startReactionGame();
     } else {

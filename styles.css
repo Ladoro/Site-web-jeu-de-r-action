@@ -17,8 +17,6 @@ body {
     width: 90%;
     max-width: 1000px; /* Augmentation de la largeur maximale */
     display: flex;
-    justify-content: space-between; /* Répartir l'espace entre le jeu et les résultats */
-    align-items: flex-start; /* Aligner les éléments en haut */
     flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
 }
 
@@ -27,7 +25,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-#userForm, .game, #results {
+#userForm, .game, #results, #leaderboard {
     margin-bottom: 20px;
     flex: 1; /* Ajuster la largeur de chaque section */
     min-width: 300px; /* Largeur minimale pour éviter le rétrécissement excessif */
@@ -98,6 +96,20 @@ button:hover {
     color: #333;
 }
 
+.results-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.results-section {
+    flex: 1;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -105,11 +117,8 @@ ul {
 }
 
 li {
-    background-color: #f8f9fa;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    width: 100%; /* Remplir la largeur du conteneur parent */
-    box-sizing: border-box; /* Inclure les bordures et les rembourrages dans la largeur totale */
 }

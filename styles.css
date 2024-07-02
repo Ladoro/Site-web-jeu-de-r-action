@@ -15,7 +15,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 600px;
+    max-width: 800px; /* Augmentation de la largeur maximale */
     text-align: center;
 }
 
@@ -56,7 +56,7 @@ button:hover {
 
 .reaction-box {
     width: 100%;
-    height: 200px;
+    height: 300px; /* Augmentation de la hauteur */
     background-color: red;
     margin: 20px 0;
     display: flex;
@@ -70,7 +70,7 @@ button:hover {
 .target-game-area {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 500px; /* Augmentation de la hauteur */
     background-color: #e9ecef;
     border: 1px solid #ccc;
     border-radius: 10px;

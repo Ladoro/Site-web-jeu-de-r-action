@@ -18,6 +18,8 @@ body {
     max-width: 1000px; /* Augmentation de la largeur maximale */
     display: flex;
     flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
+    justify-content: center;
+    align-items: flex-start; /* Aligner les éléments en haut */
 }
 
 h1, h2 {
@@ -64,6 +66,7 @@ button:hover {
     background-color: red;
     margin: 20px auto; /* Centrer horizontalement avec une marge */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;

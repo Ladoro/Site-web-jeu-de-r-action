@@ -1,55 +1,6 @@
-// Variables globales
-let username;
-let userData = {};
-
-// Sélectionner les éléments HTML
-let userForm = document.getElementById('userForm');
-let usernameInput = document.getElementById('username');
-let startButton = document.getElementById('startButton');
-let reactionTimeGame = document.getElementById('reactionTimeGame');
-let targetClickGame = document.getElementById('targetClickGame');
+// Jeu de Temps de Réaction
 let reactionBox = document.getElementById('reactionBox');
 let reactionMessage = document.getElementById('reactionMessage');
-let startTargetGameButton = document.getElementById('startTargetGame');
-let targetGameArea = document.getElementById('targetGameArea');
-let targetGameMessage = document.getElementById('targetGameMessage');
-let reactionResults = document.getElementById('reactionResults');
-let targetResults = document.getElementById('targetResults');
-
-startButton.addEventListener('click', function() {
-    username = usernameInput.value;
-    if (username) {
-        userForm.style.display = 'none';
-        reactionTimeGame.style.display = 'block';
-        targetClickGame.style.display = 'block';
-        loadUserData();
-        startReactionGame();
-    }
-});
-
-function loadUserData() {
-    let storedData = localStorage.getItem(username);
-    if (storedData) {
-        userData = JSON.parse(storedData);
-        displayResults();
-    } else {
-        userData = {
-            reactionTimes: [],
-            targetTimes: []
-        };
-    }
-}
-
-function saveUserData() {
-    localStorage.setItem(username, JSON.stringify(userData));
-}
-
-function displayResults() {
-    reactionResults.textContent = `Temps de réaction enregistrés : ${userData.reactionTimes.join(', ')}`;
-    targetResults.textContent = `Temps de jeu de cible enregistrés : ${userData.targetTimes.join(', ')}`;
-}
-
-// Jeu de Temps de Réaction
 let startTime;
 
 reactionBox.addEventListener('click', function() {
@@ -57,9 +8,6 @@ reactionBox.addEventListener('click', function() {
         let endTime = new Date().getTime();
         let reactionTime = (endTime - startTime) / 1000;
         reactionMessage.textContent = `Temps de réaction : ${reactionTime} secondes`;
-        userData.reactionTimes.push(reactionTime);
-        saveUserData();
-        displayResults();
         reactionBox.style.backgroundColor = 'red';
         setTimeout(startReactionGame, Math.random() * 2000 + 1000);
     }
@@ -73,7 +21,12 @@ function startReactionGame() {
     }, Math.random() * 2000 + 1000);
 }
 
+startReactionGame();
+
 // Jeu de Clic sur Cible
+let startTargetGameButton = document.getElementById('startTargetGame');
+let targetGameArea = document.getElementById('targetGameArea');
+let targetGameMessage = document.getElementById('targetGameMessage');
 let targetCount = 0;
 let startTimeTargetGame;
 let totalTargets = 30;
@@ -93,9 +46,6 @@ function createTarget() {
         let endTime = new Date().getTime();
         let totalTime = (endTime - startTimeTargetGame) / 1000;
         targetGameMessage.textContent = `Temps total : ${totalTime} secondes`;
-        userData.targetTimes.push(totalTime);
-        saveUserData();
-        displayResults();
         return;
     }
     

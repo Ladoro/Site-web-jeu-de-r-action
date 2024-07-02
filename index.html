@@ -16,40 +16,19 @@
         </div>
         <div class="game" id="reactionTimeGame" style="display: none;">
             <h2>Jeu de Temps de Réaction</h2>
-            <div class="game-content">
-                <p>Attendez que la couleur devienne verte, puis cliquez le plus rapidement possible.</p>
-                <div id="reactionBox" class="reaction-box">
-                    <p id="reactionMessage"></p>
-                    <button id="startReactionGameButton">Démarrer le Jeu</button>
-                </div>
-                <button id="restartReactionGame" style="display: none;">Recommencer</button>
-            </div>
+            <div id="reactionBox" class="reaction-box"></div>
+            <p id="reactionMessage"></p>
         </div>
         <div class="game" id="targetClickGame" style="display: none;">
             <h2>Jeu de Clic sur Cible</h2>
-            <div class="game-content">
-                <button id="startTargetGame">Démarrer le Jeu</button>
-                <p>Cliquez sur les 30 cibles le plus rapidement possible.</p>
-                <div id="targetGameArea" class="target-game-area"></div>
-                <p id="targetGameMessage"></p>
-            </div>
+            <button id="startTargetGame">Démarrer le Jeu</button>
+            <div id="targetGameArea" class="target-game-area"></div>
+            <p id="targetGameMessage"></p>
         </div>
-        <div id="results" style="display: none;">
+        <div id="results">
             <h2>Résultats</h2>
-            <div id="resultsContainer" class="results-container">
-                <div class="results-section">
-                    <h3>Jeu de Temps de Réaction</h3>
-                    <ul id="reactionResults"></ul>
-                </div>
-                <div class="results-section">
-                    <h3>Jeu de Clic sur Cible</h3>
-                    <ul id="targetResults"></ul>
-                </div>
-            </div>
-        </div>
-        <div id="leaderboard" style="display: none;">
-            <h2>Classement</h2>
-            <ul id="leaderboardList"></ul>
+            <p id="reactionResults"></p>
+            <p id="targetResults"></p>
         </div>
     </div>
     <script src="scripts.js"></script>

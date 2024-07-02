@@ -16,6 +16,7 @@ const targetGameMessage = document.getElementById('targetGameMessage');
 const reactionResults = document.getElementById('reactionResults');
 const targetResults = document.getElementById('targetResults');
 const resultsSection = document.getElementById('results');
+const restartReactionGameButton = document.getElementById('restartReactionGame');
 
 startButton.addEventListener('click', function() {
     username = usernameInput.value.trim();
@@ -65,8 +66,13 @@ reactionBox.addEventListener('click', function() {
         saveUserData();
         displayResults();
         reactionBox.style.backgroundColor = 'red';
-        setTimeout(startReactionGame, Math.random() * 2000 + 1000);
+        restartReactionGameButton.style.display = 'block';
     }
+});
+
+restartReactionGameButton.addEventListener('click', function() {
+    restartReactionGameButton.style.display = 'none';
+    startReactionGame();
 });
 
 function startReactionGame() {
@@ -104,15 +110,4 @@ function createTarget() {
     }
     
     let target = document.createElement('div');
-    target.className = 'target';
-    target.style.top = Math.random() * (targetGameArea.clientHeight - 30) + 'px';
-    target.style.left = Math.random() * (targetGameArea.clientWidth - 30) + 'px';
-    target.addEventListener('click', targetClicked);
-    targetGameArea.appendChild(target);
-}
-
-function targetClicked(event) {
-    targetCount++;
-    event.target.remove();
-    createTarget();
-}
+    target.className

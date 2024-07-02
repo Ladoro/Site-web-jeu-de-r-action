@@ -71,15 +71,18 @@ reactionBox.addEventListener('click', function() {
         displayResults();
         reactionBox.style.backgroundColor = 'red';
         restartReactionGameButton.style.display = 'block';
+        
+        // Réinitialiser la boîte de jeu après un court délai pour éviter un changement brusque
+        setTimeout(() => {
+            reactionBox.style.backgroundColor = 'red';
+            reactionMessage.textContent = '';
+            startReactionGame();
+        }, 1000);
     }
 });
 
-restartReactionGameButton.addEventListener('click', function() {
-    restartReactionGameButton.style.display = 'none';
-    startReactionGame();
-});
-
-function startReactionGame() {
+// Réinitialisation du jeu de réaction
+function restartReactionGame() {
     reactionMessage.textContent = 'Préparez-vous...';
     setTimeout(() => {
         reactionBox.style.backgroundColor = 'green';

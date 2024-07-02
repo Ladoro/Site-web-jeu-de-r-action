@@ -18,6 +18,7 @@ const targetResults = document.getElementById('targetResults');
 const resultsSection = document.getElementById('results');
 const restartReactionGameButton = document.getElementById('restartReactionGame');
 
+// Écouter le clic sur le bouton "Commencer"
 startButton.addEventListener('click', function() {
     username = usernameInput.value.trim();
     if (username) {
@@ -32,6 +33,7 @@ startButton.addEventListener('click', function() {
     }
 });
 
+// Charger les données de l'utilisateur depuis localStorage
 function loadUserData() {
     let storedData = localStorage.getItem(username);
     if (storedData) {
@@ -45,13 +47,15 @@ function loadUserData() {
     }
 }
 
+// Sauvegarder les données de l'utilisateur dans localStorage
 function saveUserData() {
     localStorage.setItem(username, JSON.stringify(userData));
 }
 
+// Afficher les résultats des jeux de réaction
 function displayResults() {
-    reactionResults.innerHTML = userData.reactionTimes.map(time => `<li>${time} secondes</li>`).join('');
-    targetResults.innerHTML = userData.targetTimes.map(time => `<li>${time} secondes</li>`).join('');
+    reactionResults.innerHTML = userData.reactionTimes.map(time => `<li>${time.toFixed(2)} secondes</li>`).join('');
+    targetResults.innerHTML = userData.targetTimes.map(time => `<li>${time.toFixed(2)} secondes</li>`).join('');
 }
 
 // Jeu de Temps de Réaction
@@ -61,7 +65,7 @@ reactionBox.addEventListener('click', function() {
     if (reactionBox.style.backgroundColor === 'green') {
         let endTime = new Date().getTime();
         let reactionTime = (endTime - startTime) / 1000;
-        reactionMessage.textContent = `Temps de réaction : ${reactionTime} secondes`;
+        reactionMessage.textContent = `Temps de réaction : ${reactionTime.toFixed(2)} secondes`;
         userData.reactionTimes.push(reactionTime);
         saveUserData();
         displayResults();
@@ -79,6 +83,7 @@ function startReactionGame() {
     reactionMessage.textContent = 'Préparez-vous...';
     setTimeout(() => {
         reactionBox.style.backgroundColor = 'green';
+        reactionMessage.textContent = 'Cliquez maintenant!';
         startTime = new Date().getTime();
     }, Math.random() * 2000 + 1000);
 }
@@ -86,7 +91,7 @@ function startReactionGame() {
 // Jeu de Clic sur Cible
 let targetCount = 0;
 let startTimeTargetGame;
-let totalTargets = 30;
+const totalTargets = 30;
 
 startTargetGameButton.addEventListener('click', startTargetGame);
 
@@ -102,7 +107,7 @@ function createTarget() {
     if (targetCount >= totalTargets) {
         let endTime = new Date().getTime();
         let totalTime = (endTime - startTimeTargetGame) / 1000;
-        targetGameMessage.textContent = `Temps total : ${totalTime} secondes`;
+        targetGameMessage.textContent = `Temps total : ${totalTime.toFixed(2)} secondes`;
         userData.targetTimes.push(totalTime);
         saveUserData();
         displayResults();

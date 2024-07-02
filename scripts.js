@@ -110,4 +110,15 @@ function createTarget() {
     }
     
     let target = document.createElement('div');
-    target.className
+    target.className = 'target';
+    target.style.top = Math.random() * (targetGameArea.clientHeight - 30) + 'px';
+    target.style.left = Math.random() * (targetGameArea.clientWidth - 30) + 'px';
+    target.addEventListener('click', targetClicked);
+    targetGameArea.appendChild(target);
+}
+
+function targetClicked(event) {
+    targetCount++;
+    event.target.remove();
+    createTarget();
+}
